@@ -1,49 +1,125 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@font-face {
+  font-family: "SoraBold";
+  src: url("/fonts/Sora-Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@font-face {
+  font-family: "SoraSemibold";
+  src: url("/fonts/Sora-SemiBold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
-html {
-  height: 100%;
+@font-face {
+  font-family: "SoraRegular";
+  src: url("/fonts/Sora-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+@font-face {
+  font-family: "DMSanRegular";
+  src: url("/fonts/DMSans-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: "DMSanSemibold";
+  src: url("/fonts/DMSans-SemiBold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ManropeExtraBold";
+  src: url("/fonts/Manrope-ExtraBold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NunitoBold";
+  src: url("/fonts/Nunito-Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 * {
   box-sizing: border-box;
-  padding: 0;
+}
+
+html {
   margin: 0;
+  padding: 0;
+
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+  background: #f4f9f5;
+
+  color: #202820;
+
+  font-family: "DMSanRegular", Arial, sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
 }
 
 a {
   color: inherit;
-  text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+img {
+  max-width: 100%;
+}
+
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f4f9f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b9c9be;
+
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8ea497;
+}
+
+::selection {
+  background: #d8ebdf;
+  color: #04433b;
+}
+
+@media (max-width: 700px) {
+
+  html,
+  body {
+    width: 100%;
+    overflow-x: hidden;
   }
+
 }

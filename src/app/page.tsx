@@ -1,69 +1,514 @@
+"use client";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./page.module.css";
 
-export default function Home() {
+export default function HomeScreen() {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const heroTranslate = Math.min(scrollY * 0.25, 70);
+  const heroScale = 1 + Math.min(scrollY * 0.00025, 0.025);
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.tsx</code> file.
-          </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className={styles.container}>
+
+      <section className={styles.topSectionWrapper}>
+
+        <div className={styles.headerBackground}>
+
+          <Image
+            src="/images/bg-main.jpg"
+            alt="SADAIV Finance"
+            fill
+            priority
+            className={styles.headerBackgroundImage}
+            style={{
+              transform: `translateY(${heroTranslate}px) scale(${heroScale})`,
+            }}
+          />
+
+          <div className={styles.headerOverlay} />
+
+          <div className={styles.headerSpace} />
+
+          <div className={styles.greetingSection}>
+            <p className={styles.smallGreeting}>
+              ☀️ Good Morning 👋
+            </p>
+
+            <h1 className={styles.userName}>
+              Rahul Patil
+            </h1>
+          </div>
+
+        </div>
+
+
+        <div className={styles.searchContainer}>
+
+          <span className={styles.searchIcon}>
+            ⌕
+          </span>
+
+          <input
+            type="text"
+            placeholder="Search name, UPI ID or mobile"
+            className={styles.searchInput}
+          />
+
+          <button className={styles.scanIcon}>
+            ⌗
+          </button>
+
+        </div>
+
+      </section>
+
+      <section className={styles.sectionHeader}>
+
+        <div>
+          <h2 className={styles.sectionTitle}>
+            Your Accounts
+          </h2>
+
+          <p className={styles.sectionSubtitle}>
+            Manage your linked bank accounts
           </p>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <button className={styles.viewAll}>
+          View all &gt;
+        </button>
+
+      </section>
+
+      <div className={styles.accountsScroll}>
+
+        {/* HDFC */}
+
+        <div className={styles.accountCard}>
+
+          <Image
+            src="/images/card3.png"
+            alt=""
+            fill
+            className={styles.accountCardImage}
+          />
+
+          <div className={styles.cardContent}>
+
+            <div className={styles.accountHeader}>
+
+              <div className={styles.bankIdentity}>
+
+                <div className={styles.bankLogo}>
+                  <Image
+                    src="/images/hdfc.png"
+                    alt="HDFC Bank"
+                    width={45}
+                    height={45}
+                  />
+                </div>
+
+                <div className={styles.bankInfo}>
+
+                  <p className={styles.bankName}>
+                    HDFC Bank
+                  </p>
+
+                  <p className={styles.accountNumber}>
+                    Savings •••• 1234
+                  </p>
+
+                </div>
+
+              </div>
+
+              <button className={styles.cardMenu}>
+                •••
+              </button>
+
+            </div>
+
+
+            <div className={styles.balanceSection}>
+
+              <p className={styles.balanceLabel}>
+                Available Balance
+              </p>
+
+              <p className={styles.balance}>
+                ₹2,24,560.50
+              </p>
+
+            </div>
+
+
+            <div className={styles.cardFooter}>
+
+              <div>
+                <p className={styles.footerLabel}>
+                  Account Type
+                </p>
+
+                <p className={styles.footerValue}>
+                  Primary Account
+                </p>
+              </div>
+
+              <div className={styles.activeBadge}>
+                <span className={styles.activeDot} />
+
+                <span className={styles.activeText}>
+                  Active
+                </span>
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
-      </main>
-    </div>
+
+        <div className={styles.accountCard}>
+
+          <Image
+            src="/images/card3.png"
+            alt=""
+            fill
+            className={styles.accountCardImage}
+          />
+
+          <div className={styles.cardContent}>
+
+            <div className={styles.accountHeader}>
+
+              <div className={styles.bankIdentity}>
+
+                <div className={styles.bankLogo}>
+                  <Image
+                    src="/images/sboi.png"
+                    alt="State Bank of India"
+                    width={45}
+                    height={45}
+                  />
+                </div>
+
+                <div className={styles.bankInfo}>
+
+                  <p className={styles.bankName}>
+                    State Bank of India
+                  </p>
+
+                  <p className={styles.accountNumber}>
+                    Savings •••• 5678
+                  </p>
+
+                </div>
+
+              </div>
+
+              <button className={styles.cardMenu}>
+                •••
+              </button>
+
+            </div>
+
+
+            <div className={styles.balanceSection}>
+
+              <p className={styles.balanceLabel}>
+                Available Balance
+              </p>
+
+              <p className={styles.balance}>
+                ₹56,780.20
+              </p>
+
+            </div>
+
+
+            <div className={styles.cardFooter}>
+
+              <div>
+                <p className={styles.footerLabel}>
+                  Account Type
+                </p>
+
+                <p className={styles.footerValue}>
+                  Savings Account
+                </p>
+              </div>
+
+              <div className={styles.activeBadge}>
+                <span className={styles.activeDot} />
+
+                <span className={styles.activeText}>
+                  Active
+                </span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <button className={styles.scanPay}>
+
+        <div className={styles.qrContainer}>
+          ⌗
+        </div>
+
+        <div className={styles.scanContent}>
+
+          <p className={styles.scanTitle}>
+            Scan & Pay
+          </p>
+
+          <p className={styles.scanSubtitle}>
+            Scan any QR code and make instant payments
+          </p>
+
+        </div>
+
+        <div className={styles.arrowButton}>
+          →
+        </div>
+
+      </button>
+
+      <section className={styles.sectionHeader}>
+
+        <div>
+
+          <h2 className={styles.sectionTitle}>
+            Quick Actions
+          </h2>
+
+          <p className={styles.sectionSubtitle}>
+            Payments & everyday services
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <div className={styles.quickActions}>
+
+        <QuickAction
+          image="/images/send.png"
+          text="Send Money"
+          href="/send_money"
+        />
+
+        <QuickAction
+          icon="♧"
+          text="To Mobile"
+          href="/to_mobile"
+        />
+
+        <QuickAction
+          image="/images/upi-icon.png"
+          text="To UPI ID"
+          href="/upi"
+          plain
+        />
+
+        <QuickAction
+          icon="♙"
+          text="Self Transfer"
+          href="/self_transfer"
+        />
+
+        <QuickAction
+          icon="▣"
+          text="Recharge"
+          href="/mobile_recharge"
+        />
+
+        <QuickAction
+          icon="▤"
+          text="Utility Bills"
+          href="/utility_bills"
+        />
+
+        <QuickAction
+          icon="▭"
+          text="Credit Card"
+          href="/credit_card_bill"
+        />
+
+        <QuickAction
+          image="/images/fastag.png"
+          text="FASTag"
+          href="/fasttag"
+          plain
+        />
+
+      </div>
+
+      <section className={styles.sectionHeader}>
+
+        <div>
+
+          <h2 className={styles.sectionTitle}>
+            Explore More
+          </h2>
+
+          <p className={styles.sectionSubtitle}>
+            More ways to manage your money
+          </p>
+
+        </div>
+
+      </section>
+
+      <div className={styles.services}>
+
+        <Service
+          image="/images/ingots.png"
+          text="Digital Gold"
+          sub="Buy 24K Gold"
+        />
+
+        <Service
+          image="/images/growth.png"
+          text="SIP Investment"
+          sub="Start SIP"
+        />
+
+        <Service
+          image="/images/insurance.png"
+          text="Insurance"
+          sub="Protect Now"
+        />
+
+        <Service
+          image="/images/notification.png"
+          text="Reminders"
+          sub="3 Dues"
+        />
+
+      </div>
+
+
+      {/* Bottom space for fixed tab bar */}
+      <div className={styles.bottomSpace} />
+
+    </main>
+  );
+}
+
+
+function QuickAction({
+  icon,
+  image,
+  text,
+  href,
+  plain = false,
+}: {
+  icon?: string;
+  image?: string;
+  text: string;
+  href: string;
+  plain?: boolean;
+}) {
+  return (
+    <a
+      href={href}
+      className={styles.quickAction}
+    >
+
+      {image ? (
+
+        <div
+          className={
+            plain
+              ? styles.plainImageContainer
+              : styles.iconContainer
+          }
+        >
+
+          <Image
+            src={image}
+            alt={text}
+            width={34}
+            height={34}
+            className={styles.actionImage}
+          />
+
+        </div>
+
+      ) : (
+
+        <div className={styles.iconContainer}>
+          <span className={styles.simpleIcon}>
+            {icon}
+          </span>
+        </div>
+
+      )}
+
+      <span className={styles.quickActionText}>
+        {text}
+      </span>
+
+    </a>
+  );
+}
+
+
+function Service({
+  image,
+  text,
+  sub,
+}: {
+  image: string;
+  text: string;
+  sub: string;
+}) {
+  return (
+    <a
+      href="#"
+      className={styles.service}
+    >
+
+      <div className={styles.serviceIconContainer}>
+
+        <Image
+          src={image}
+          alt={text}
+          width={28}
+          height={28}
+          className={styles.serviceIcon}
+        />
+
+      </div>
+
+      <span className={styles.serviceText}>
+        {text}
+      </span>
+
+      <span className={styles.serviceSub}>
+        {sub}
+      </span>
+
+    </a>
   );
 }

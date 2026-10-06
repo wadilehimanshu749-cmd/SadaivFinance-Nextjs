@@ -1,0 +1,220 @@
+.fixedContainer {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 90px;
+
+  z-index: 999;
+
+  background: transparent;
+
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.whiteBg {
+  position: absolute;
+
+  inset: 0;
+
+  background: #ffffff;
+
+  opacity: 0;
+
+  transition: opacity 0.3s ease;
+
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.scrolled {
+  background: rgba(255, 255, 255, 0.97);
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.scrolled .whiteBg {
+  opacity: 1;
+}
+
+
+.header {
+  position: relative;
+
+  height: 100%;
+
+  padding: 20px 22px 10px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  z-index: 2;
+}
+
+
+.leftContainer {
+  display: flex;
+
+  align-items: center;
+
+  height: 40px;
+}
+
+
+.brand {
+  display: flex;
+
+  align-items: center;
+}
+
+
+.logoBox {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+.logoImage {
+  width: 32px;
+  height: 32px;
+
+  object-fit: contain;
+
+  transition:
+    filter 0.3s ease,
+    opacity 0.3s ease;
+}
+
+
+
+.logoImage {
+  filter:
+    brightness(0)
+    saturate(100%)
+    invert(94%)
+    sepia(8%)
+    saturate(350%)
+    hue-rotate(65deg)
+    brightness(103%);
+}
+
+
+
+.scrolled .logoImage {
+  filter: none;
+}
+
+
+.logo {
+  padding-left: 10px;
+  padding-right: 4px;
+
+  font-size: 22px;
+
+  color: #ffffff;
+
+  font-family: "SoraBold", sans-serif;
+
+  transition: color 0.3s ease;
+}
+
+.scrolled .logo {
+  color: #070808;
+}
+
+
+.subLogo {
+  margin-top: 4px;
+
+  font-size: 10px;
+
+  color: #d0dce5;
+
+  font-family: "SoraRegular", sans-serif;
+
+  transition: color 0.3s ease;
+}
+
+.scrolled .subLogo {
+  color: #7c847b;
+}
+
+.rightSection {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+
+.iconBtn {
+  width: 32px;
+  height: 32px;
+
+  border: none;
+
+  background: transparent;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  padding: 0;
+}
+
+
+.notificationIcon,
+.profileIcon {
+  font-size: 22px;
+
+  color: #dcefdc;
+
+  transition: color 0.3s ease;
+}
+
+.scrolled .notificationIcon,
+.scrolled .profileIcon {
+  color: #202820;
+}
+
+
+.divider {
+  width: 1px;
+  height: 18px;
+
+  background: rgba(150, 150, 150, 0.25);
+}
+
+@media (max-width: 600px) {
+
+  .header {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  .subLogo {
+    font-size: 9px;
+  }
+
+}
