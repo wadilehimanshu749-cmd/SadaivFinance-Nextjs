@@ -121,6 +121,13 @@
   margin-top: 5px;
 }
 
+@media (min-width: 769px){
+
+  .tabBar{
+    display: none;
+  }
+}
+
 @media (max-width: 500px) {
   .tabBar {
     height: 65px;

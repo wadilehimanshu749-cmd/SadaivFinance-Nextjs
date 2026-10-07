@@ -5,11 +5,14 @@ import Image from "next/image";
 import styles from "./Header.module.css";
 import IonIcon from "@reacticons/ionicons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faCoffee,} from '@fortawesome/free-solid-svg-icons'; 
+import { faEnvelope, faCoffee, } from '@fortawesome/free-solid-svg-icons';
 import { faUser as faUserRegular } from "@fortawesome/free-regular-svg-icons";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,7 +29,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className={`${styles.fixedContainer} ${ scrolled ? styles.scrolled : ""}`}>
+    <header className={`${styles.fixedContainer} ${scrolled ? styles.scrolled : ""}`}>
 
       <div className={styles.whiteBg} />
 
@@ -45,7 +48,7 @@ export default function Header() {
                 width={60}
                 height={60}
                 className={styles.logoImage}
-                style={{width: "60px", height: "60px"}}/>
+                style={{ width: "60px", height: "60px" }} />
 
             </div>
 
@@ -60,6 +63,29 @@ export default function Header() {
           </div>
 
         </div>
+
+        <nav className={styles.desktopNav}>
+
+          <Link href="/" className={`${styles.navItem} ${pathname === "/" ? styles.activeNavItem : ""}`}>
+            Home
+          </Link>
+
+          <Link
+            href="/loan"
+            className={`${styles.navItem} ${pathname === "/loan" ? styles.activeNavItem : ""}`}>
+            Loan
+          </Link>
+
+
+          <Link href="/investment" className={`${styles.navItem} ${pathname === "/investment" ? styles.activeNavItem : "" }`}>
+            Investment
+          </Link>
+
+          <Link href="/history" className={`${styles.navItem} ${pathname === "/history" ? styles.activeNavItem : ""}`}>
+            History
+          </Link>
+
+        </nav>
 
 
 

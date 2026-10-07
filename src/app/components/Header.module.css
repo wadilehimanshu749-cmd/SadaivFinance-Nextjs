@@ -202,7 +202,68 @@
   background: rgba(150, 150, 150, 0.25);
 }
 
-@media (max-width: 600px) {
+.desktopNav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-left: auto;
+  margin-right: 35px;
+}
+
+.navItem {
+  position: relative;
+
+  text-decoration: none;
+
+  font-size: 13px;
+
+  color: #d0dce5;
+
+  font-family: "DMSanSemibold", sans-serif;
+
+  padding: 8px 2px;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+/* Header after scrolling */
+
+.scrolled .navItem {
+  color: #526057;
+}
+
+/* Active desktop tab */
+
+.activeNavItem {
+  color: #ffffff !important;
+}
+
+.scrolled .activeNavItem {
+  color: #04433b !important;
+}
+
+/* Green underline */
+
+.activeNavItem::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: 2px;
+
+  border-radius: 5px;
+
+  background: currentColor;
+}
+
+
+@media (max-width: 768px) {
 
   .header {
     padding-left: 18px;
@@ -215,6 +276,10 @@
 
   .subLogo {
     font-size: 9px;
+  }
+
+  .desktopNav{
+    display: none;
   }
 
 }
