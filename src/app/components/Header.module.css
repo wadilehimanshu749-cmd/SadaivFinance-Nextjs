@@ -77,8 +77,8 @@
 
 
 .logoBox {
-  width: 32px;
-  height: 32px;
+  width: 60px;
+  height: 60px;
 
   display: flex;
 
@@ -88,8 +88,8 @@
 
 
 .logoImage {
-  width: 32px;
-  height: 32px;
+  width: 60px;
+  height: 60px;
 
   object-fit: contain;
 
@@ -126,7 +126,7 @@
 
   color: #ffffff;
 
-  font-family: "SoraBold", sans-serif;
+  font-family: "SoraBold";
 
   transition: color 0.3s ease;
 }
@@ -143,7 +143,7 @@
 
   color: #d0dce5;
 
-  font-family: "SoraRegular", sans-serif;
+  font-family: "SoraRegular";
 
   transition: color 0.3s ease;
 }

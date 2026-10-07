@@ -1,6 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass, faUser } from "@fortawesome/free-solid-svg-icons";
+import { IoScan,IoPersonOutline,IoArrowForwardOutline, IoQrCodeOutline, IoWalletOutline, IoPhonePortraitOutline, IoNewspaperOutline, IoCardOutline, IoScanOutline } from "react-icons/io5";
 import styles from "./page.module.css";
 
 export default function HomeScreen() {
@@ -59,7 +62,8 @@ export default function HomeScreen() {
         <div className={styles.searchContainer}>
 
           <span className={styles.searchIcon}>
-            ⌕
+            <FontAwesomeIcon icon={faMagnifyingGlass} style={{ fontSize: '20px' }} />
+
           </span>
 
           <input
@@ -69,7 +73,7 @@ export default function HomeScreen() {
           />
 
           <button className={styles.scanIcon}>
-            ⌗
+            <IoScan size={25} />
           </button>
 
         </div>
@@ -95,8 +99,6 @@ export default function HomeScreen() {
       </section>
 
       <div className={styles.accountsScroll}>
-
-        {/* HDFC */}
 
         <div className={styles.accountCard}>
 
@@ -271,7 +273,7 @@ export default function HomeScreen() {
       <button className={styles.scanPay}>
 
         <div className={styles.qrContainer}>
-          ⌗
+          <IoQrCodeOutline size={30} />
         </div>
 
         <div className={styles.scanContent}>
@@ -287,7 +289,7 @@ export default function HomeScreen() {
         </div>
 
         <div className={styles.arrowButton}>
-          →
+          <IoArrowForwardOutline size={20} />
         </div>
 
       </button>
@@ -312,13 +314,13 @@ export default function HomeScreen() {
       <div className={styles.quickActions}>
 
         <QuickAction
-          image="/images/send.png"
+          icon=  {<IoWalletOutline size={25} />}
           text="Send Money"
           href="/send_money"
         />
 
         <QuickAction
-          icon="♧"
+          icon={<IoPhonePortraitOutline size={25} />}
           text="To Mobile"
           href="/to_mobile"
         />
@@ -331,25 +333,25 @@ export default function HomeScreen() {
         />
 
         <QuickAction
-          icon="♙"
+          icon= {<IoPersonOutline size={25} />}
           text="Self Transfer"
           href="/self_transfer"
         />
 
         <QuickAction
-          icon="▣"
+          icon={<IoPhonePortraitOutline size={25} />}
           text="Recharge"
           href="/mobile_recharge"
         />
 
         <QuickAction
-          icon="▤"
+          icon= {<IoNewspaperOutline size={25} />}
           text="Utility Bills"
           href="/utility_bills"
         />
 
         <QuickAction
-          icon="▭"
+          icon= {<IoCardOutline size={25} />}
           text="Credit Card"
           href="/credit_card_bill"
         />
@@ -423,17 +425,14 @@ function QuickAction({
   href,
   plain = false,
 }: {
-  icon?: string;
+  icon?: React.ReactNode;
   image?: string;
   text: string;
   href: string;
   plain?: boolean;
 }) {
   return (
-    <a
-      href={href}
-      className={styles.quickAction}
-    >
+    <a href={href} className={styles.quickAction}>
 
       {image ? (
 
@@ -442,8 +441,7 @@ function QuickAction({
             plain
               ? styles.plainImageContainer
               : styles.iconContainer
-          }
-        >
+          }>
 
           <Image
             src={image}
@@ -484,10 +482,7 @@ function Service({
   sub: string;
 }) {
   return (
-    <a
-      href="#"
-      className={styles.service}
-    >
+    <a href="#" className={styles.service}>
 
       <div className={styles.serviceIconContainer}>
 
@@ -496,8 +491,7 @@ function Service({
           alt={text}
           width={28}
           height={28}
-          className={styles.serviceIcon}
-        />
+          className={styles.serviceIcon} />
 
       </div>
 

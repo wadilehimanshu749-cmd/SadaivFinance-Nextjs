@@ -3,6 +3,10 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./Header.module.css";
+import IonIcon from "@reacticons/ionicons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faCoffee,} from '@fortawesome/free-solid-svg-icons'; 
+import { faUser as faUserRegular } from "@fortawesome/free-regular-svg-icons";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -22,11 +26,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header
-      className={`${styles.fixedContainer} ${
-        scrolled ? styles.scrolled : ""
-      }`}
-    >
+    <header className={`${styles.fixedContainer} ${ scrolled ? styles.scrolled : ""}`}>
 
       <div className={styles.whiteBg} />
 
@@ -42,11 +42,10 @@ export default function Header() {
               <Image
                 src="/images/comp_logo.png"
                 alt="SADAIV"
-                width={80}
-                height={80}
+                width={60}
+                height={60}
                 className={styles.logoImage}
-                style={{width: "32px", height: "32px"}}
-              />
+                style={{width: "60px", height: "60px"}}/>
 
             </div>
 
@@ -66,14 +65,11 @@ export default function Header() {
 
         <div className={styles.rightSection}>
 
-          <button
-            className={styles.iconBtn}
-            onClick={() =>
-              console.log("Notification clicked")
-            }
-          >
+          <button className={styles.iconBtn}
+            onClick={() => console.log("Notification clicked")}>
+
             <span className={styles.notificationIcon}>
-              ♧
+              <IonIcon name="notifications-outline" />
             </span>
           </button>
 
@@ -85,10 +81,9 @@ export default function Header() {
             className={styles.iconBtn}
             onClick={() =>
               console.log("Profile clicked")
-            }
-          >
+            }>
             <span className={styles.profileIcon}>
-              ♙
+              <FontAwesomeIcon icon={faUserRegular} style={{ fontSize: '20px' }} />
             </span>
           </button>
 
